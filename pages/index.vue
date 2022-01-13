@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="app">
     <div class="title-section">
       <div class="container">
-        <h2 class="title">
-          цены joki joya в санкт-петербурге
-        </h2>
+        <h1 class="title">
+          <span data-content="цены joki joya в санкт-петербурге">цены joki joya в санкт-петербурге</span>
+        </h1>
       </div>
     </div>
     <div class="menu-section">
@@ -77,6 +77,11 @@ export default {
 </script>
 
 <style lang="scss">
+.app {
+  background-image: url("~assets/img/wave.png");
+  background-position-x: calc(100% + 60px);
+  background-position-y: 3%;
+}
 
 .container {
   max-width: 1130px;
@@ -84,12 +89,11 @@ export default {
 }
 .title-section {
   margin-bottom: 54px;
+  margin-top: 59px;
 }
 .title {
   font-family: 'Marvin-Round';
-  background: linear-gradient(-2deg, #cca06a 0%, #d3ab78 30%, #b17c3b 70%, #e4c6a8 100%);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  
   color: #cda472;
   font-size: 52px;
   font-weight: 400;
@@ -97,16 +101,34 @@ export default {
   letter-spacing: normal;
   line-height: 51.75px;
   text-align: center;
+  position: relative;
+}
+.title > span {
+  background: linear-gradient(-2deg, #cca06a 0%, #d3ab78 30%, #b17c3b 70%, #e4c6a8 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  display: block;
+  &:after {
+    content: attr(data-content);
+    color: #cca06a;
+    position: absolute;
+    left: 0;
+    -webkit-text-stroke-width: 10px;
+    -webkit-text-stroke-color: #fff;
+    width: 100%;
+    text-shadow: 6px 6px 5px rgb(0 0 0 / 30%);
+    z-index: -1;
+    top: 0;
+  }
 }
 .tab-button {
   font-family: 'Roboto-Regular';
   background: #e1e8eb;
   color: #758185;
   font-weight: 400;
-  // line-height: 108.01px;
   font-size: 24px;
   letter-spacing: -0.6px;
-  // padding: 16px 25px;
   height: 91px;
   max-width: 223px;
   width: 100%;
@@ -114,7 +136,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  // height: 100%;
 }
 .active {
   background: #758185;

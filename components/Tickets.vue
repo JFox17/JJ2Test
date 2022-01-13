@@ -1,5 +1,6 @@
 <template>
 <div class="tickets">
+  <img :src="require(`@/assets/img/balloon.png`)" class="tickets__balloon" />
   <div class="tickets__caption">
     <div class="container">
       <h3 class="tickets__title">цены на вход и пользование<br> всеми аттракционами</h3>
@@ -10,40 +11,44 @@
     <div class="container">
       <div class="tariff__wrap">
         <div class="tariff__block">
-          <div class="tariff__weekdays">
-            <p class="tariff__text">Будни</p>
-            <div class="tariff__info" v-if="weekdays">
-              <div class="tariff__item">
-                <img :src="require(`@/assets/img/small-infinity.png`)" />
-                <div>
-                  <p class="tariff__price">Входной билет <br><span class="tariff__price-dop">(на целый день)</span></p>
-                  <p class="tariff__price-large">950 руб.</p>
+          <div class="tariff__tickets">
+            <div class="tariff__weekdays">
+              <p class="tariff__text">Будни</p>
+              <div class="tariff__info" v-if="weekdays">
+                <div class="tariff__item" v-for="(weekdaysTicket, idx) in weekdays" :key="idx">
+                  <img :src="require(`@/assets/img/small-infinity.png`)" />
+                  <div>
+                    <p class="tariff__price">Входной билет<br><span class="tariff__price-dop">(на целый день)</span></p>
+                    <p class="tariff__price-large">{{weekdaysTicket.price}} руб.</p>
+                  </div>
                 </div>
-              </div>
-              <div class="tariff__item">
-                <img :src="require(`@/assets/img/hour.png`)" />
-                <div>
-                  <p class="tariff__price">Входной билет <br><span class="tariff__price-dop">(на целый день)</span></p>
-                  <p class="tariff__price-large">950 руб.</p>
+                <div class="tariff__item">
+                  <img :src="require(`@/assets/img/hour.png`)" />
+                  <div>
+                    <p class="tariff__price">Билет на 1 час</p>
+                    <p class="tariff__price-large">350 руб.</p>
+                  </div>
                 </div>
-              </div>
-              <div class="tariff__item" v-for="(weekdaysTicket, idx) in weekdays" :key="idx">
-                <img :src="require(`@/assets/img/next.png`)" />
-                <div>
-                  <p class="tariff__price">Входной билет <br><span class="tariff__price-dop">(на целый день)</span></p>
-                  <p class="tariff__price-large">{{weekdaysTicket.price}} руб.</p>
+                <div class="tariff__item">
+                  <img :src="require(`@/assets/img/next.png`)" />
+                  <div>
+                    <p class="tariff__price">Продление <br><span class="tariff__price-dop">(до полного дня)</span></p>
+                    <p class="tariff__price-large">100 руб.</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="tariff__weekend" v-if="weekend">
-            <p class="tariff__text">выходные <br><span class="tariff__text-dop">и праздничные дни</span></p>
-            <div class="tariff__info" v-for="(weekendTicket, idx) in weekend" :key="idx">
-              <img :src="require(`@/assets/img/infinity.png`)" />
-              <p class="tariff__price">Входной билет <br><span class="tariff__price-dop">(на целый день)</span></p>
-              <p class="tariff__price-large">{{weekendTicket.price}} руб.</p>
+            <div class="tariff__weekend" v-if="weekend">
+              <p class="tariff__text">выходные <br><span class="tariff__text-dop">и праздничные дни</span></p>
+              <div class="tariff__info" v-for="(weekendTicket, idx) in weekend" :key="idx">
+                <img :src="require(`@/assets/img/infinity.png`)" />
+                <p class="tariff__price">Входной билет</p>
+                <span class="tariff__price-dop">(на целый день)</span>
+                <p class="tariff__price-large">{{weekendTicket.price}} руб.</p>
+              </div>
             </div>
           </div>
+          <button class="tariff__buy">КУПИТЬ БИЛЕТ</button>
         </div>
         <div class="tariff__picture">
           <img :src="require(`@/assets/img/child.png`)" />
@@ -75,8 +80,8 @@ export default {
 <style scoped lang="scss">
 .tickets {
   width: 100%;
+  position: relative;
   &__title{
-    
     font-family: 'Roboto-Black';
     font-size: 30px;
     font-weight: 400px;
@@ -86,43 +91,58 @@ export default {
     text-align: center;
   }
   &__caption {
-    margin-top: 84px;
-    margin-bottom: 62px;
+    padding-top: 84px;
+    padding-bottom: 62px;
+  }
+  &__balloon {
+    position: absolute;
+    left: 10%;
   }
 }
 .tariff {
   background: #fafbfc;
+  padding: 58px 0 63px;
+  background-image: url("~assets/img/wave2.png");
+  background-position-x: calc(92%);
+  background-position-y: 18%;
+  background-repeat: no-repeat;
+  overflow: hidden;
   &__wrap {
     display: flex;
   }
-  
   &__block {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  &__tickets {
     display: flex;
     justify-content: center;
     justify-content: space-evenly;
-    width: 70%;
   }
   &__text {
     font-family: 'Roboto-Bold';
     font-size: 36px;
-    line-height: 25px;
+    line-height: 20px;
     font-weight: 700;
     color: #758185;
     text-transform: uppercase;
     text-align: center;
     border-bottom: 3px solid #fcc302;
-    height: 58px;
+    padding-top: 15px;
+    height: 75px;
   }
   &__weekdays {
     width: 50%;
     border-right: 3px solid #fcc302;
+    padding-bottom: 30px;
   }
   &__weekend {
     width: 50%;
   }
   &__text-dop {
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 14px;
   }
   &__info {
     display: flex;
@@ -153,11 +173,8 @@ export default {
   &__item {
     display: flex;
     align-items: center;
-    &:first-child {
-      margin-bottom: 34px;
-    }
-    &:nth-child(2) {
-      margin-bottom: 34px;
+    &:nth-child(n + 2) {
+      margin-top: 44px;
     }
   }
   &__item > img {
@@ -167,10 +184,34 @@ export default {
   &__picture {
     align-self: stretch;
     position: relative;
+    @media (max-width: 1000px) {
+      width: 30%;
+    }
   }
   &__picture > img {
     height: 100%;
     position: absolute;
+    bottom: 0;
+    @media (min-width: 1000px) and (max-width: 1300px) {
+      height: 90%;
+    }
+    @media (max-width: 1000px) {
+      height: auto;
+      width: 100%;
+    }
+  }
+  &__buy {
+    font-family: 'Roboto-Bold';
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: 2.2px;
+    line-height: 20px;
+    text-align: center;
+    padding: 31.5px 85px;
+    color: #ffff;
+    background: #fcc302;
+    align-self: center;
+    margin: 110px 0 63px;
   }
 }
 </style>
