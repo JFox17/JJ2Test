@@ -3,7 +3,7 @@
     <div class="title-section">
       <div class="container">
         <h1 class="title">
-          <span data-content="цены joki joya в санкт-петербурге">цены joki joya в санкт-петербурге</span>
+          <span data-content="цены joki joya в санкт&nbsp;-&nbsp;петербурге">цены joki joya в санкт&nbsp;-&nbsp;петербурге</span>
         </h1>
       </div>
     </div>
@@ -78,9 +78,12 @@ export default {
 
 <style lang="scss">
 .app {
-  background-image: url("~assets/img/wave.png");
-  background-position-x: calc(100% + 60px);
-  background-position-y: 3%;
+  @media (min-width: 480px) {
+    background-image: url("~assets/img/wave.png");
+    background-position-x: calc(100% + 60px);
+    background-position-y: 3%;
+  }
+  
 }
 
 .container {
@@ -93,7 +96,6 @@ export default {
 }
 .title {
   font-family: 'Marvin-Round';
-  
   color: #cda472;
   font-size: 52px;
   font-weight: 400;
@@ -102,6 +104,18 @@ export default {
   line-height: 51.75px;
   text-align: center;
   position: relative;
+  @media (max-width: 628px) {
+    font-size: 40px;
+    line-height: 46.75px;
+  }
+  @media (max-width: 480px) {
+    font-size: 28px;
+    line-height: 35.75px;
+  }
+  @media (max-width: 320px) {
+    font-size: 24px;
+    line-height: 34.75px;
+  }
 }
 .title > span {
   background: linear-gradient(-2deg, #cca06a 0%, #d3ab78 30%, #b17c3b 70%, #e4c6a8 100%);
@@ -136,6 +150,16 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  @media (max-width: 980px) {
+    flex-direction: column;
+  }
+  @media (max-width: 628px) {
+    font-size: 21px;
+  }
+  @media (max-width: 480px) {
+    margin-bottom: 3px;
+  }
+  
 }
 .active {
   background: #758185;
@@ -144,6 +168,10 @@ export default {
 .tab-menu {
   display: flex;
   justify-content: center;
+  padding: 0 30px;
+  @media (max-width: 480px) {
+    flex-wrap: wrap;
+  }
 
 }
 </style>

@@ -3,7 +3,7 @@
   <img :src="require(`@/assets/img/balloon.png`)" class="tickets__balloon" />
   <div class="tickets__caption">
     <div class="container">
-      <h3 class="tickets__title">цены на вход и пользование<br> всеми аттракционами</h3>
+      <h3 class="tickets__title">цены на вход и&nbsp;пользование<br> всеми аттракционами</h3>
     </div>
   </div>
 
@@ -89,31 +89,45 @@ export default {
     text-transform: uppercase;
     letter-spacing: 6px;
     text-align: center;
+    @media (max-width: 628px) {
+      font-size: 20px;
+    }
   }
   &__caption {
-    padding-top: 84px;
-    padding-bottom: 62px;
+    padding: 84px 20px 62px;
   }
   &__balloon {
     position: absolute;
     left: 10%;
+    @media (max-width: 1000px) {
+      display: none;
+    }
   }
 }
 .tariff {
   background: #fafbfc;
-  padding: 58px 0 63px;
+  padding: 58px 20px 63px;
   background-image: url("~assets/img/wave2.png");
-  background-position-x: calc(92%);
+  background-position-x: 92%;
   background-position-y: 18%;
   background-repeat: no-repeat;
   overflow: hidden;
+  @media (max-width: 768px) {
+    background-position-y: 55%;
+  }
   &__wrap {
     display: flex;
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
   }
   &__block {
     width: 70%;
     display: flex;
     flex-direction: column;
+    @media (max-width: 768px) {
+      width: 100%;
+    }
   }
   
   &__tickets {
@@ -132,6 +146,9 @@ export default {
     border-bottom: 3px solid #fcc302;
     padding-top: 15px;
     height: 75px;
+    @media (max-width: 628px) {
+      font-size: 21px;
+    }
   }
   &__weekdays {
     width: 50%;
@@ -143,6 +160,9 @@ export default {
   }
   &__text-dop {
     font-size: 14px;
+    @media (max-width: 400px) {
+      font-size: 10px;
+    }
   }
   &__info {
     display: flex;
@@ -155,12 +175,19 @@ export default {
     width: 105px;
     height: 50px;
     margin-bottom: 32px;
+    @media (max-width: 400px) {
+      width: 75px;
+    height: 30px;
+    }
   }
   &__price {
     font-family: 'Roboto-Regular';
     font-weight: 400;
     font-size: 24px;
     line-height: 18px;
+    @media (max-width: 628px) {
+      font-size: 20px;
+    }
   }
   &__price-dop {
     font-size: 16px;
@@ -169,6 +196,9 @@ export default {
     font-family: 'Roboto-Bold';
     font-size: 36px;
     font-weight: 700;
+    @media (max-width: 628px) {
+      font-size: 20px;
+    }
   }
   &__item {
     display: flex;
@@ -176,26 +206,35 @@ export default {
     &:nth-child(n + 2) {
       margin-top: 44px;
     }
+    @media (max-width: 400px) {
+      flex-wrap: wrap;
+    }
   }
   &__item > img {
     height: 100%;
     margin-right: 16px;
+    @media (max-width: 400px) {
+      margin-bottom: 16px;
+    }
   }
   &__picture {
     align-self: stretch;
     position: relative;
-    @media (max-width: 1000px) {
+    @media (max-width: 1100px) {
       width: 30%;
+    }
+    @media (max-width: 768px) {
+      display: none;
     }
   }
   &__picture > img {
     height: 100%;
     position: absolute;
     bottom: 0;
-    @media (min-width: 1000px) and (max-width: 1300px) {
+    @media (min-width: 1100px) and (max-width: 1300px) {
       height: 90%;
     }
-    @media (max-width: 1000px) {
+    @media (max-width: 1100px) {
       height: auto;
       width: 100%;
     }
@@ -212,6 +251,11 @@ export default {
     background: #fcc302;
     align-self: center;
     margin: 110px 0 63px;
+    @media (max-width: 628px) {
+      font-size: 21px;
+      padding: 21.5px 65px;
+      margin: 80px 0 43px;
+    }
   }
 }
 </style>
