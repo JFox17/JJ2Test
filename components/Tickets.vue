@@ -1,6 +1,6 @@
 <template>
 <div class="tickets">
-  <img :src="require(`@/assets/img/balloon.png`)" class="tickets__balloon" />
+  <img src="~assets/img/balloon.png" class="tickets__balloon" />
   <div class="tickets__caption">
     <div class="container">
       <h3 class="tickets__title">цены на вход и&nbsp;пользование<br> всеми аттракционами</h3>
@@ -16,21 +16,21 @@
               <p class="tariff__text">Будни</p>
               <div class="tariff__info" v-if="weekdays">
                 <div class="tariff__item" v-for="(weekdaysTicket, idx) in weekdays" :key="idx">
-                  <img :src="require(`@/assets/img/small-infinity.png`)" />
+                  <img src="~/assets/img/small-infinity.png" alt="картинка" />
                   <div>
                     <p class="tariff__price">Входной билет<br><span class="tariff__price-dop">(на целый день)</span></p>
                     <p class="tariff__price-large">{{weekdaysTicket.price}} руб.</p>
                   </div>
                 </div>
                 <div class="tariff__item">
-                  <img :src="require(`@/assets/img/hour.png`)" />
+                  <img src="~/assets/img/hour.png" alt="картинка" />
                   <div>
                     <p class="tariff__price">Билет на 1 час</p>
                     <p class="tariff__price-large">350 руб.</p>
                   </div>
                 </div>
                 <div class="tariff__item">
-                  <img :src="require(`@/assets/img/next.png`)" />
+                  <img src="~/assets/img/next.png" alt="картинка" />
                   <div>
                     <p class="tariff__price">Продление <br><span class="tariff__price-dop">(до полного дня)</span></p>
                     <p class="tariff__price-large">100 руб.</p>
@@ -41,7 +41,7 @@
             <div class="tariff__weekend" v-if="weekend">
               <p class="tariff__text">выходные <br><span class="tariff__text-dop">и праздничные дни</span></p>
               <div class="tariff__info" v-for="(weekendTicket, idx) in weekend" :key="idx">
-                <img :src="require(`@/assets/img/infinity.png`)" />
+                <img src="~/assets/img/infinity.png" alt="картинка" />
                 <p class="tariff__price">Входной билет</p>
                 <span class="tariff__price-dop">(на целый день)</span>
                 <p class="tariff__price-large">{{weekendTicket.price}} руб.</p>
@@ -51,7 +51,7 @@
           <button class="tariff__buy">КУПИТЬ БИЛЕТ</button>
         </div>
         <div class="tariff__picture">
-          <img :src="require(`@/assets/img/child.png`)" />
+          <img src="~/assets/img/child.png" alt="картинка" />
         </div>
         
       </div>
@@ -250,11 +250,15 @@ export default {
     color: #ffff;
     background: #fcc302;
     align-self: center;
+    transition: 0.5s;
     margin: 110px 0 63px;
     @media (max-width: 628px) {
       font-size: 21px;
       padding: 21.5px 65px;
       margin: 80px 0 43px;
+    }
+    &:hover {
+      background: #ffd240;
     }
   }
 }

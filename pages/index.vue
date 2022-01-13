@@ -16,7 +16,7 @@
             :class="['tab-button', { active: currentTab === tab.comp }]"
             @click="currentTab = tab.comp"
           >
-            <img :src="require(`@/assets/img/${tab.img}`)" /> {{ tab.title }}
+            <img :src="require(`@/assets/img/${tab.img}`)" alt="картинка" /> {{ tab.title }}
           </button>
         </div>
       </div>
@@ -150,6 +150,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  transition: 0.5s;
   @media (max-width: 980px) {
     flex-direction: column;
   }
@@ -158,6 +159,9 @@ export default {
   }
   @media (max-width: 480px) {
     margin-bottom: 3px;
+  }
+  &:hover {
+    background: #d6dee0;
   }
   
 }
